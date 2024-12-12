@@ -75,7 +75,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{Links}</ul>
         </div>
+
         <div className="navbar-end space-x-2 mr-4">
+          <div></div>
           <NavLink
             to="/Register"
             className="underline mr-6 font-bold hidden md:block "

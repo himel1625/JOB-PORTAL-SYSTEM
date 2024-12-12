@@ -35,32 +35,39 @@ const SignIn = () => {
 
           <div className="divider font-bold pt-4 px-4">Or continue with</div>
 
-          <div className="pt-3 px-4">
-            <label className="font-light text-sm pb-2 block" htmlFor="username">
-              Username or Email address *
-            </label>
-            <input
-              type="text"
-              name="text"
-              id="username"
-              placeholder="Steven job"
-              className="input input-bordered w-full"
-            />
-          </div>
+          <form>
+            <div className="pt-3 px-4">
+              <label
+                className="font-light text-sm pb-2 block"
+                htmlFor="username"
+              >
+                Username or Email address *
+              </label>
+              <input
+                type="text"
+                name="text"
+                id="username"
+                placeholder="Steven job"
+                className="input input-bordered w-full"
+              />
+            </div>
 
-          <div className="pt-3 px-4">
-            <label className="font-light text-sm pb-2 block" htmlFor="password">
-              Password *
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="***********"
-              className="input input-bordered w-full"
-            />
-          </div>
-
+            <div className="pt-3 px-4">
+              <label
+                className="font-light text-sm pb-2 block"
+                htmlFor="password"
+              >
+                Password *
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="***********"
+                className="input input-bordered w-full"
+              />
+            </div>
+          </form>
           <div className="flex justify-between items-center mx-4 pt-6 text-sm">
             <div className="flex items-center">
               <input
