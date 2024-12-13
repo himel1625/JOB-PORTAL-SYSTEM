@@ -8,7 +8,7 @@ const Register = () => {
       <Helmet>
         <title>Job-Portal | Register</title>
       </Helmet>
-      <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+      <div className="flex items-center justify-center min-h-screen  px-4">
         <div className="border border-gray-200 shadow-lg rounded-xl w-full sm:w-11/12 md:w-2/3 lg:w-1/3 bg-white">
           <div className="text-center px-6 py-8">
             <h1 className="text-xl sm:text-2xl font-bold text-blue-500">

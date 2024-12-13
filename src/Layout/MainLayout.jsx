@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar';
+import Footer from '../Pages/Shared/Footer/Footer';
 
 const MainLayout = () => {
   return (
@@ -11,6 +12,7 @@ const MainLayout = () => {
           <Toaster position="top-right" reverseOrder={false} />
           <Outlet></Outlet>
         </div>
+        <Footer/>
       </div>
     </>
   );
