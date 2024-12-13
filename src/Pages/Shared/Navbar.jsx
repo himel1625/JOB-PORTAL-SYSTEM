@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar h-20  backdrop-filter backdrop-blur-xl bg-blue-300">
+      <div className="navbar h-20  backdrop-filter backdrop-blur-xl bg-blue-100">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
