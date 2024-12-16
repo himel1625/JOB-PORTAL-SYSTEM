@@ -1,8 +1,34 @@
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogo from '../../assets/Google.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import toast from 'react-hot-toast/headless';
 
 const SignIn = () => {
+  const { setUser, handleLogin, handleGoogleBUtton } = useContext(AuthContext);
+  const Location = useLocation();
+  const Navigate = useNavigate();
+
+  const handleGoogle = () => {
+    handleGoogleBUtton();
+  };
+
+  const handelSubmit = e => {
+    e.preventDefault();
+    const from = new FormData(e.target);
+    const email = from.get('email');
+    const password = from.get('password');
+    handleLogin(email, password).then(res => {
+      setUser(res.data);
+      Navigate(Location?.state ? Location.state : '/');
+      e.target.reset();
+      if (res.data) {
+        toast.success('Login success full ');
+      }
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -25,17 +51,20 @@ const SignIn = () => {
           <div className="hover:scale-105 transition-transform cursor-pointer px-4">
             <hr />
             <div className="flex items-center justify-center py-4">
-              <img className="w-6 h-6" src={GoogleLogo} alt="Google Logo" />
-              <p className="font-bold ml-2 text-sm sm:text-base">
+              <button
+                onClick={handleGoogle}
+                className="font-bold ml-2 text-sm sm:text-base flex"
+              >
+                <img className="w-6 h-6" src={GoogleLogo} alt="Google Logo" />
                 Sign in with Google
-              </p>
+              </button>
             </div>
             <hr />
           </div>
 
           <div className="divider font-bold pt-4 px-4">Or continue with</div>
 
-          <form>
+          <form onSubmit={handelSubmit}>
             <div className="pt-3 px-4">
               <label
                 className="font-light text-sm pb-2 block"
@@ -44,8 +73,8 @@ const SignIn = () => {
                 Username or Email address *
               </label>
               <input
-                type="text"
-                name="text"
+                type="email"
+                name="email"
                 id="username"
                 placeholder="Steven job"
                 className="input input-bordered w-full"
@@ -67,33 +96,34 @@ const SignIn = () => {
                 className="input input-bordered w-full"
               />
             </div>
-          </form>
-          <div className="flex justify-between items-center mx-4 pt-6 text-sm">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox checkbox-info mr-2"
-              />
-              <span className="font-bold">Remember me</span>
+
+            <div className="flex justify-between items-center mx-4 pt-6 text-sm">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  defaultChecked
+                  className="checkbox checkbox-info mr-2"
+                />
+                <span className="font-bold">Remember me</span>
+              </div>
+              <p className="underline text-red-500 cursor-pointer">
+                Forgot Password
+              </p>
             </div>
-            <p className="underline text-red-500 cursor-pointer">
-              Forgot Password
-            </p>
-          </div>
 
-          <div className="pt-6 px-4">
-            <button className="btn bg-blue-700 w-full hover:bg-blue-900 text-white">
-              Login
-            </button>
-          </div>
+            <div className="pt-6 px-4">
+              <button className="btn bg-blue-700 w-full hover:bg-blue-900 text-white">
+                Login
+              </button>
+            </div>
 
-          <div className="flex items-center justify-center pt-4 pb-6">
-            <p className="text-sm">Don't have an Account?</p>
-            <Link to="/Register" className="underline text-sm ml-2">
-              Register
-            </Link>
-          </div>
+            <div className="flex items-center justify-center pt-4 pb-6">
+              <p className="text-sm">Don't have an Account?</p>
+              <Link to="/Register" className="underline text-sm ml-2">
+                Register
+              </Link>
+            </div>
+          </form>
         </div>
       </div>
     </>

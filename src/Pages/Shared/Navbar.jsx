@@ -1,6 +1,17 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navbar = () => {
+  const { user, LogOut } = useContext(AuthContext);
+
+  const handelLogout = () => {
+    LogOut();
+    if (user) {
+      alert('LogOut');
+    }
+  };
+
   const Links = (
     <>
       <div className=" space-x-4 font-bold flex flex-col md:flex-row  ">
@@ -83,12 +94,18 @@ const Navbar = () => {
           >
             Register
           </NavLink>
-
-          <NavLink to="/SignIn">
-            <div className="py-2 px-4 bg-blue-500 rounded-lg text-white font-bold cursor-pointer ">
-              Sign in
-            </div>
-          </NavLink>
+          {user && (
+            <button onClick={handelLogout} className="font-bold ">
+              LogOut
+            </button>
+          )}
+          {!user && (
+            <NavLink to="/SignIn">
+              <div className="py-2 px-4 bg-blue-500 rounded-lg text-white font-bold cursor-pointer ">
+                Sign in
+              </div>
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

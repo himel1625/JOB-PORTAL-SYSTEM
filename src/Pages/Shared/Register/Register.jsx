@@ -1,8 +1,30 @@
 import { Helmet } from 'react-helmet-async';
 import GoogleLogo from '../../../assets/Google.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+  const Location = useLocation();
+  const Navigate = useNavigate();
+  const { setUser, handleRegister } = useContext(AuthContext);
+  const handelRegisterSubmit = e => {
+    e.preventDefault();
+    const from = new FormData(e.target);
+    const email = from.get('email');
+    const password = from.get('password');
+    console.log(email, password);
+    handleRegister(email, password).then(res => {
+      setUser(res.data);
+      Navigate(Location?.state ? Location.state : '/');
+      e.target.reset();
+      if (res.data) {
+        toast.success('Register successFull');
+      }
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -37,7 +59,7 @@ const Register = () => {
             OR
           </div>
 
-          <form className="px-6 space-y-4">
+          <form onSubmit={handelRegisterSubmit} className="px-6 space-y-4">
             <div>
               <label
                 className="block text-sm font-medium text-gray-600"
@@ -77,6 +99,7 @@ const Register = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered w-full focus:outline-none focus:ring focus:ring-blue-300"
               />
@@ -92,6 +115,7 @@ const Register = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 className="input input-bordered w-full focus:outline-none focus:ring focus:ring-blue-300"
               />
