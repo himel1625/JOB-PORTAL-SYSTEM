@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 const Register = () => {
   const Location = useLocation();
   const Navigate = useNavigate();
+  
   const { setUser, handleRegister } = useContext(AuthContext);
   const handelRegisterSubmit = e => {
     e.preventDefault();
