@@ -7,6 +7,7 @@ import toast from 'react-hot-toast/headless';
 
 const SignIn = () => {
   const { setUser, handleLogin, handleGoogleBUtton } = useContext(AuthContext);
+  
   const Location = useLocation();
   const Navigate = useNavigate();
 
