@@ -40,12 +40,12 @@ const Navbar = () => {
           Home
         </NavLink>
         <NavLink
-          to="/"
+          to="/MyAddedJobs"
           className={({ isActive }) =>
             `font-bold ${isActive ? 'text-blue-400' : 'hover:text-blue-600'}`
           }
         >
-          Home
+          MyAddedJobs
         </NavLink>
       </div>
     </>

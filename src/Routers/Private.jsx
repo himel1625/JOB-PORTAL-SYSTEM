@@ -3,7 +3,7 @@ import { AuthContext } from '../Contexts/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import Loader from '../Components/Loader/Loader';
 
-const Private = () => {
+const Private = ({ children }) => {
   const { pathname } = useLocation();
   const { user, loading } = useContext(AuthContext);
   if (loading) return <Loader />;

@@ -3,6 +3,8 @@ import MainLayout from '../Layout/MainLayout';
 import Register from '../Pages/Shared/Register/Register';
 import Home from '../Pages/Home/Home';
 import SignIn from '../Pages/SignIn/SignIn';
+import MyAddedJobs from '../Pages/Home/AddJobs/myAddedJobs';
+import Private from './Private';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: '/SignIn',
         element: <SignIn />,
+      },
+      {
+        path: '/MyAddedJobs',
+        element: (
+          <Private>
+            <MyAddedJobs />
+          </Private>
+        ),
       },
     ],
   },
