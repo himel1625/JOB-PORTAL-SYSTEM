@@ -43,17 +43,25 @@ const JobCard = ({ job }) => {
           Contact HR
         </a>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-wrap gap-2">
         {Array.isArray(job.requirements) && job.requirements.length > 0 ? (
-          <ul className="list-disc pl-5 ">
-            {job.requirements.map((item, index) => (
-              <li key={index}>{item.skill || item}</li> 
-            ))}
-          </ul>
+          job.requirements.map((item, index) => (
+            <div
+              key={index}
+              className={`px-3 py-1 border rounded-full shadow-sm text-gray-700 text-xs 
+          ${index % 4 === 0 ? 'bg-blue-200' : ''} 
+          ${index % 4 === 1 ? 'bg-green-200' : ''} 
+          ${index % 4 === 2 ? 'bg-purple-200' : ''} 
+          ${index % 4 === 3 ? 'bg-yellow-200' : ''}`}
+            >
+              {item.skill || item}
+            </div>
+          ))
         ) : (
           <p className="text-gray-500">No specific requirements listed.</p>
         )}
       </div>
+
       <div className="mt-6">
         <button className="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
           View Details

@@ -21,7 +21,7 @@ const AllJobsCard = () => {
   }, []);
 
   return (
-    <div className='mt-20'>
+    <div className="mt-20">
       <div className="container mx-auto p-4 mt-10">
         <div className="flex items-center justify-between bg-white shadow-md rounded-lg p-6">
           <div className="flex items-center space-x-4">
@@ -46,6 +46,12 @@ const AllJobsCard = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div class="flex flex-col items-center justify-center text-center p-6">
+        <p class="text-5xl font-extrabold">Jobs of the day</p>
+        <p class="mt-2 text-lg">
+          Search and connect with the right candidates faster.
+        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 md:px-6 lg:px-8 mt-20">
