@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 const Register = () => {
   const Location = useLocation();
   const Navigate = useNavigate();
-  
+
   const { setUser, handleRegister } = useContext(AuthContext);
   const handelRegisterSubmit = e => {
     e.preventDefault();
@@ -37,6 +37,7 @@ const Register = () => {
             <h1 className="text-xl sm:text-2xl font-bold text-blue-500">
               Register
             </h1>
+            
             <p className="text-lg sm:text-xl font-semibold mt-2">
               Start for free today
             </p>
