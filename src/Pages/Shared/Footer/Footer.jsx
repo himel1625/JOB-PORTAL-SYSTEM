@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <div>
+    <div className="mt-20">
       <hr />
-      <footer className=" py-10 px-6 md:px-12">
+      <footer className=" py-10 px-6 md:px-12 ">
         <div className="flex flex-wrap justify-center gap-8">
           <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <h3 className="text-xl font-bold text-gray-900">JobBox</h3>

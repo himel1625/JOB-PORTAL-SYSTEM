@@ -1,3 +1,4 @@
+import AllJobsCard from './AllJobsCard/AllJobsCard';
 import Banner from './Banner/Banner';
 import Hero from './Hero/Hero';
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <Banner />
       <Hero />
+      <AllJobsCard />
     </div>
   );
 };

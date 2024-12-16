@@ -27,7 +27,7 @@ async function run() {
     console.log(
       'Pinged your deployment. You successfully connected to MongoDB!'
     );
-    
+
     app.post('/add-job', async (req, res) => {
       const jobData = req.body;
       console.log(jobData);
@@ -39,6 +39,8 @@ async function run() {
       const result = await jobBoxCollection.find().toArray();
       res.send(result);
     });
+
+    
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
