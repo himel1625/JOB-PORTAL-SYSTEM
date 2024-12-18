@@ -66,7 +66,7 @@ const JobCard = ({ job }) => {
       <div className='mt-6'>
         {/* JobDetails */}
 
-        <Link to={`/job/${job._id}`}>
+        <Link to={`/job/details/${job._id}`}>
           <button className='w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors'>
             View Details
           </button>

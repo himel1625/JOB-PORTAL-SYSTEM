@@ -48,7 +48,9 @@ const MyPostedJobs = () => {
 
   return (
     <div className='p-4'>
-      <h1 className='text-2xl font-bold mb-4'>My Posted Jobs</h1>
+      <h1 className='text-2xl font-bold mb-4'>
+        My Posted Jobs : {jobs.length}
+      </h1>
       {jobs.length > 0 ? (
         <div className='overflow-x-auto'>
           <table className='table-auto border-collapse border border-gray-300 w-full text-sm'>

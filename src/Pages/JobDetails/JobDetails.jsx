@@ -10,7 +10,7 @@ const JobDetails = () => {
     const fetchJob = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/job/${id}`,
+          `${import.meta.env.VITE_API_URL}/job/details/${id}`,
         );
         setJob(response.data);
       } catch (error) {
