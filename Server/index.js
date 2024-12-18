@@ -1,6 +1,7 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const express = require('express');
 const cors = require('cors');
+const { rules } = require('eslint-plugin-react');
 require('dotenv').config();
 
 const port = process.env.PORT || 9000;
@@ -30,7 +31,6 @@ async function run() {
 
     app.post('/add-job', async (req, res) => {
       const jobData = req.body;
-      console.log(jobData);
       const result = await jobBoxCollection.insertOne(jobData);
       res.send(result);
     });
@@ -39,6 +39,12 @@ async function run() {
       const email = req.params.email;
       const query = { user_email: email };
       const result = await jobBoxCollection.find(query).toArray();
+      res.send(result);
+    });
+    app.delete('/jobs/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await jobBoxCollection.deleteOne(query);
       res.send(result);
     });
 

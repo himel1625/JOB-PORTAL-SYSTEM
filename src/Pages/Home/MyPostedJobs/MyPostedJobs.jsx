@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyPostedJobs = () => {
@@ -19,7 +20,29 @@ const MyPostedJobs = () => {
     };
     fetchJobs();
   }, [user?.email]);
-  console.log(jobs);
+
+  const handelDelete = _id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        axios.delete(`${import.meta.env.VITE_API_URL}/jobs/${_id}`);
+        setJobs(prevJobs => prevJobs.filter(job => job._id !== _id));
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
     <div className='p-4'>
       <h1 className='text-2xl font-bold mb-4'>My Posted Jobs</h1>
@@ -59,7 +82,10 @@ const MyPostedJobs = () => {
                     <button className='bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600'>
                       Edit
                     </button>
-                    <button className='bg-red-500 text-white px-3 py-1 rounded ml-2 hover:bg-red-600'>
+                    <button
+                      onClick={() => handelDelete(job._id)}
+                      className='bg-red-500 text-white px-3 py-1 rounded ml-2 hover:bg-red-600'
+                    >
                       Delete
                     </button>
                   </td>
