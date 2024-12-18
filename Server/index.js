@@ -25,7 +25,7 @@ async function run() {
     await client.connect();
     await client.db('admin').command({ ping: 1 });
     console.log(
-      'Pinged your deployment. You successfully connected to MongoDB!'
+      'Pinged your deployment. You successfully connected to MongoDB!',
     );
 
     app.post('/add-job', async (req, res) => {
@@ -35,12 +35,17 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/jobs/:email', async (req, res) => {
+      const email = req.params.email;
+      const query = { user_email: email };
+      const result = await jobBoxCollection.find(query).toArray();
+      res.send(result);
+    });
+
     app.get('/jobs', async (req, res) => {
       const result = await jobBoxCollection.find().toArray();
       res.send(result);
     });
-
-    
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
