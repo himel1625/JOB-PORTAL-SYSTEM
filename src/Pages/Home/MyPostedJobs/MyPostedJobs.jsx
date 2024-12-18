@@ -42,6 +42,9 @@ const MyPostedJobs = () => {
       }
     });
   };
+  const handelUpdate = _id => {
+    console.log(_id);
+  };
 
   return (
     <div className='p-4'>
@@ -79,7 +82,10 @@ const MyPostedJobs = () => {
                     {new Date(job.postedOn).toLocaleDateString()}
                   </td>
                   <td className='border border-gray-300 px-4 py-2 text-center'>
-                    <button className='bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600'>
+                    <button
+                      onClick={() => handelUpdate(job._id)}
+                      className='bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600'
+                    >
                       Edit
                     </button>
                     <button
